@@ -100,6 +100,7 @@ module Danger
 
     def parse_blame(url)
       regex = %r{(?:rel="(?:author|contributor)">([^<]+)</a> authored|(?:<tr class="blame-line">))}
+      puts "Read from #{url}"
       source = open(url, &:read)
       matches = source.scan(regex).to_a.flatten
 
