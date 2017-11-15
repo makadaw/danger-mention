@@ -75,6 +75,7 @@ module Danger
     def compose_urls(files)
       host = 'https://' + env.request_source.host
       repo_slug = env.ci_source.repo_slug
+      puts env.ci_source
 
       path = ""
       addition = ""
@@ -100,7 +101,6 @@ module Danger
 
     def parse_blame(url)
       regex = %r{(?:rel="(?:author|contributor)">([^<]+)</a> authored|(?:<tr class="blame-line">))}
-      puts "Read from #{url}"
       source = open(url, &:read)
       matches = source.scan(regex).to_a.flatten
 
