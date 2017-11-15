@@ -108,6 +108,7 @@ module Danger
       lines = {}
 
       matches.each do |user|
+        puts user
         if user
           current = user
         else
