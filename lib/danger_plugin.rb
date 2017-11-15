@@ -77,9 +77,11 @@ module Danger
       repo_slug = env.ci_source.repo_slug
 
       path = ""
+      addition = ""
       if defined? @dangerfile.gitlab
         # https://gitlab.com/danger-systems/danger.systems/blame/danger_update/.gitlab-ci.yml
         path = host + '/' + repo_slug + '/' + 'blame' + '/' + gitlab.branch_for_base
+        addition = "?private_token=#{ENV["DANGER_GITHUB_API_TOKEN"]}"
 
       elsif defined? @dangerfile.github
         # https://github.com/artsy/emission/blame/master/dangerfile.js
@@ -90,7 +92,7 @@ module Danger
 
       urls = []
       files.each do |file|
-        urls << path + '/' + file
+        urls << path + '/' + file + addition
       end
 
       urls
