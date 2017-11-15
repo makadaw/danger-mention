@@ -81,7 +81,7 @@ module Danger
       addition = ""
       if defined? @dangerfile.gitlab
         # https://gitlab.com/danger-systems/danger.systems/blame/danger_update/.gitlab-ci.yml
-        path = host + '/' + repo_slug + '/' + 'blame' + '/' + gitlab.branch_for_base
+        path = host + '/' + ENV["DANGER_GITLAB_PROJECT_NAME"] + '/' + 'blame' + '/' + gitlab.branch_for_base
         addition = "?private_token=#{ENV["DANGER_GITLAB_API_TOKEN"]}"
 
       elsif defined? @dangerfile.github
